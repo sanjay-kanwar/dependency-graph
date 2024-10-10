@@ -1,5 +1,3 @@
-import { Position, MarkerType } from "@xyflow/react";
-import { nodes as initialNodes } from "../data/nodes";
 import { QuarterNode, TeamNode, Edge } from "../model";
 
 const nodeDefaults = {

@@ -1,18 +1,15 @@
 import React, { useCallback } from "react";
 import { ReactFlow, useNodesState, useEdgesState } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
-
-import FloatingEdge from "./edgetype/FloatingEdge";
-import FloatingConnectionLine from "./edgetype/FloatingConnectionLine";
 import { buildTeams } from "./utils/index";
 
 // const nodeTypes = {
 //   elk: ElkNode,
 // };
 
-const edgeTypes = {
-  floating: FloatingEdge,
-};
+// const edgeTypes = {
+//   floating: FloatingEdge,
+// };
 const { nodes: initialNodes, edges: initialEdges } = buildTeams();
 
 const App = () => {
@@ -43,8 +40,7 @@ const App = () => {
         onConnect={onConnect}
         className="react-flow-subflows-example"
         fitView
-        edgeTypes={edgeTypes}
-        connectionLineComponent={FloatingConnectionLine}
+        // edgeTypes={edgeTypes}
         // nodeTypes={nodeTypes}
       />
     // </div>

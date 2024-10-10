@@ -64,10 +64,10 @@ export const buildTeams = () => {
       style: {
         height: 120,
         width: 1080,
-        background: i==0 ? "lightgray" : 'wheat',
+        background: i == 0 ? "lightgray" : "wheat",
         border: "solid 1px black",
-        display: 'flex',
-        fontSize: '1.2rem'
+        display: "flex",
+        fontSize: "1.2rem",
       },
     };
     teams.push(team);
@@ -146,6 +146,15 @@ const buildServicesNode = (quarter: QuarterNode, quarterNode: QuarterNode) => {
       source: quarterNode.id,
       target: `${quarterNode.id}_${SERVICES[i]}`,
     };
+    let interConnEdge = {
+      id: `edge-${quarter.id}`,
+      target: "team1_Q1_S5",
+      source: "team2_Q4_S5",
+      animated: true,
+      style: { stroke: 'red' },
+    };
+    edges.push(interConnEdge);
+
     edges.push(edge);
     subNodes.push(node);
   }

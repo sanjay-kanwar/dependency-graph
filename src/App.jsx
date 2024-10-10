@@ -34,7 +34,7 @@ const App = () => {
     [setEdges]
   );
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    // <div style={{ width: "100vw", height: "100vh" }}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -47,7 +47,7 @@ const App = () => {
         connectionLineComponent={FloatingConnectionLine}
         // nodeTypes={nodeTypes}
       />
-    </div>
+    // </div>
   );
 };
 export default App;

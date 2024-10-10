@@ -8,8 +8,8 @@ import {
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ReactFlowProvider>
+    {/* <ReactFlowProvider> */}
       <App />
-    </ReactFlowProvider>
+    {/* </ReactFlowProvider> */}
   </StrictMode>
 );

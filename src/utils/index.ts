@@ -102,7 +102,6 @@ export function createNodesAndEdges() {
 const nodeDefaults = {
   style: {
     borderRadius: "100%",
-    backgroundColor: "#fff",
     width: 8,
     height: 8,
     display: "flex",
@@ -188,17 +187,22 @@ const buildQuarter = (teams: TeamNode[]) => {
         style: {
           height: 120,
           width: 270,
-          padding:20
+          overflow: 'hidden',
         },
       };
       const quarterNode = {
         id: `${teams[i].id}_${QUARTERS[j]}`,
         data: { label: `${QUARTERS[j]}` },
-        position: { x: j <= 1 ? 100 : 50 * (j), y: 20},
+        position: { x: j <= 1 ? 100 : 50 * (j), y: 50},
         parentId: `${teams[i].id}-${QUARTERS[j]}`,
         draggable: false,
+        extent: 'parent',
         style: {
           ...nodeDefaults.style,
+          fontSize: '.35rem',
+          border: 'solid green 1px',
+          overflow: 'hidden',
+          
         },
       };
       const { subNodes, edges } = buildServicesNode(quarter, quarterNode);
@@ -219,14 +223,19 @@ const buildServicesNode = (quarter: QuarterNode, quarterNode: QuarterNode) => {
     const degrees = i * (360 / SERVICES.length);
     const radians = degrees * (Math.PI / 180);
     const x = (80 * Math.cos(radians) + center.x);
-    const y = (80 * Math.sin(radians) + center.y);
+    const y = (50 * Math.sin(radians) + center.y);
     const node = {
       id: `${quarterNode.id}_${SERVICES[i]}`,
       data: { label: `${SERVICES[i]}` },
       position: { x, y },
       parentId: quarter.id,
       extent: 'parent',
-      ...nodeDefaults,
+      style:{
+          ...nodeDefaults.style,
+          backgroundColor: i ===4 ? 'red': '#000000',
+          color: '#fff',
+          fontSize: '.35rem'
+      }
     };
     const edge = {
       id: `edge-${quarterNode.id}_${SERVICES[i]}`,

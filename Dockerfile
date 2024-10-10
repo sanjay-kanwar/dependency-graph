@@ -2,11 +2,13 @@ FROM node:18-alpine AS build
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package.json ./
 
 #RUN npm install -g serve
 
 RUN npm install
+
+COPY package-lock.json ./
 
 COPY . .
 

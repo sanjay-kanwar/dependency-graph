@@ -1,6 +1,7 @@
 export type TeamNode = {
   id: string;
   name: string;
+  data: { label: string };
   position: { x: number; y: number };
   style: Record<string, string | number>;
 };

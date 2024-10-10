@@ -2,7 +2,7 @@ import { QuarterNode, TeamNode, Edge } from "../model";
 
 const nodeDefaults = {
   style: {
-    // borderRadius: "100%",
+    borderRadius: "100%",
     width: 8,
     height: 8,
     display: "flex",

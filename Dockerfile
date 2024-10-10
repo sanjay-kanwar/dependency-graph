@@ -1,4 +1,4 @@
-FROM node:18-alpine AS build
+FROM node:21-alpine AS build
 
 WORKDIR /app
 
@@ -12,11 +12,11 @@ COPY . .
 
 RUN npm run build
 
-RUN npm install -g serve
+# RUN npm install -g serve
 
 EXPOSE 3000:3000
 
-#CMD ["npm", "run", "dev", "--", "--host", "--no-open"]
-CMD ["serve", "-s", "build", "-l", "3000"]
+CMD ["npm", "run", "dev", "--", "--host", "--no-open"]
+# CMD ["serve", "-s", "build", "-l", "3000"]
 
 

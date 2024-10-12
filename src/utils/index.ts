@@ -679,7 +679,7 @@ const buildServicesNode = (
             let interConnEdge = {
                 id: `edge-${quarter.id}`,
                 target: `${dependItem.team}_${dependItem.quarter}_${dependItem.node}`,
-                source: `${quarterNode.id}`,
+                source: `${quarterNode.id}_${key}`,
                 animated: true,
                 style: { stroke: "red" },
               };

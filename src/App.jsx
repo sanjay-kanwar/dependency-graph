@@ -66,7 +66,7 @@ const App = () => {
               position: "absolute",
               zIndex: 10000,
               top: mousePosition.y-90 , // Slight offset from the element
-              left: mousePosition.x-30,
+              left: mousePosition.x+10,
               padding: "5px 10px",
               background: "black",
               color: "white",

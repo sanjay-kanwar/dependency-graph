@@ -12,6 +12,7 @@ export type QuarterNode = {
   position: { x: number; y: number };
   parentId: string;
   draggable: boolean;
+  extent?: string,
   type?: "group";
   style: Record<string, string | number>;
 };

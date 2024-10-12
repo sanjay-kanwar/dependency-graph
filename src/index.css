@@ -49,5 +49,9 @@ body,
 }
 
 .react-flow__edges{
-  z-index: 100;
+  z-index: 10000;
+}
+
+.react-flow__viewport{
+  top: 0px;
 }

@@ -43,9 +43,9 @@ const App = () => {
     setHoveredNode(null);
   });
   return (
-    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start' }}>
-      <h1 style={{ margin: "20px 0" }}>Flow Chart Example</h1>{" "}
-    <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
+    <div style={{ height: '100vh', width: '100vw', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start' }}>
+      <h1 style={{ margin: "20px 0" }}>Dependency Graph</h1>{" "}
+    <div style={{ position: "relative", width: "100%", height: "100%" }}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -58,6 +58,7 @@ const App = () => {
         fitView
         // edgeTypes={edgeTypes}
         // nodeTypes={nodeTypes}
+        style={{ width: '100vw', height: '100vh' }} 
       >
         {hoveredNode?.data?.label && (
           <div

@@ -23,3 +23,10 @@ export type Edge = {
   target: string;
   type?: string;
 };
+
+
+export type DependingNode ={
+    team: string, 
+    quarter: string, 
+    node: string
+} 

@@ -1,4 +1,4 @@
-import { QuarterNode, TeamNode, Edge } from "../model";
+import { QuarterNode, TeamNode, Edge, DependingNode } from "../model";
 
 const nodeDefaults = {
   style: {
@@ -24,7 +24,9 @@ const TEAMS = [
     },
     Q2: {
       S3: {
-        dependsOn: [],
+        dependsOn: [
+
+        ],
       },
       S4: {
         dependsOn: [],
@@ -41,7 +43,13 @@ const TEAMS = [
         dependsOn: [],
       },
       S4: {
-        dependsOn: [],
+        dependsOn: [
+            {
+                team: "TeamD",
+                quarter: "Q1",
+                node: "S6",
+              },
+        ],
       },
       S5: {
         dependsOn: [],
@@ -57,7 +65,7 @@ const TEAMS = [
       },
       S9: {
         dependsOn: [],
-      }
+      },
     },
     Q4: {
       S1: {
@@ -123,15 +131,17 @@ const TEAMS = [
         dependsOn: [],
       },
     },
-    Q2: {
-  
-    },
+    Q2: {},
     Q3: {
       S2: {
         dependsOn: [],
       },
       S4: {
-        dependsOn: [],
+        dependsOn: [  {
+            team: "TeamE",
+            quarter: "Q3",
+            node: "S4",
+          },],
       },
     },
     Q4: {
@@ -357,12 +367,12 @@ const TEAMS = [
         dependsOn: [],
       },
       S4: {
-        dependsOn: [],
+        dependsOn: [
+        
+        ],
       },
     },
-    Q2: {
-      
-    },
+    Q2: {},
     Q3: {
       S2: {
         dependsOn: [],
@@ -423,7 +433,9 @@ const TEAMS = [
     name: "TeamF",
     Q1: {
       S1: {
-        dependsOn: [],
+        dependsOn: [
+            
+        ],
       },
       S2: {
         dependsOn: [],
@@ -434,7 +446,9 @@ const TEAMS = [
         dependsOn: [],
       },
       S4: {
-        dependsOn: [],
+        dependsOn: [
+          
+        ],
       },
     },
     Q3: {
@@ -450,7 +464,13 @@ const TEAMS = [
         dependsOn: [],
       },
       S4: {
-        dependsOn: [],
+        dependsOn: [
+            {
+                team: "TeamF",
+                quarter: "Q1",
+                node: "S1",
+              },
+        ],
       },
     },
   },
@@ -532,15 +552,19 @@ const TEAMS = [
         dependsOn: [],
       },
     },
-    Q3: {
-     
-    },
+    Q3: {},
     Q4: {
       S1: {
         dependsOn: [],
       },
       S4: {
-        dependsOn: [],
+        dependsOn: [
+            {
+                team: "TeamB",
+                quarter: "Q1",
+                node: "S1",
+              },
+        ],
       },
     },
   },
@@ -626,7 +650,7 @@ const buildServicesNode = (
   const edges: Edge[] = [];
   const center = { x: 270 / 2, y: 120 / 2 };
   const tickets = Object.entries(value);
-  for (const [i, [key, value]] of tickets.entries()) {
+  for (const [i, [key, val]] of tickets.entries()) {
     const degrees = i * (360 / tickets.length);
     const radians = degrees * (Math.PI / 180);
     const x = 80 * Math.cos(radians) + center.x;
@@ -650,14 +674,19 @@ const buildServicesNode = (
       source: quarterNode.id,
       target: `${quarterNode.id}_${key}`,
     };
-    // let interConnEdge = {
-    //   id: `edge-${quarter.id}`,
-    //   target: "team1_Q1_S5",
-    //   source: "team2_Q4_S5",
-    //   animated: true,
-    //   style: { stroke: "red" },
-    // };
-    // edges.push(interConnEdge);
+    if (val?.dependsOn?.length) {
+        for(const dependItem of val.dependsOn){
+            let interConnEdge = {
+                id: `edge-${quarter.id}`,
+                target: `${dependItem.team}_${dependItem.quarter}_${dependItem.node}`,
+                source: `${quarterNode.id}`,
+                animated: true,
+                style: { stroke: "red" },
+              };
+              edges.push(interConnEdge);
+        }
+      
+    }
 
     edges.push(edge);
     subNodes.push(node);
